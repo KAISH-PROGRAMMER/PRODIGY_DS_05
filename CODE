@@ -1,0 +1,37 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample dataset (hypothetical)
+data = {
+    'Road_Conditions': ['Dry', 'Wet', 'Dry', 'Snow', 'Wet', 'Wet', 'Dry', 'Snow'],
+    'Weather_Conditions': ['Clear', 'Rain', 'Clear', 'Snow', 'Rain', 'Rain', 'Clear', 'Snow'],
+    'Time_of_Day': ['Morning', 'Evening', 'Afternoon', 'Night', 'Morning', 'Evening', 'Afternoon', 'Night'],
+    'Accident_Severity': [3, 2, 1, 2, 3, 1, 2, 3]
+}
+
+df = pd.DataFrame(data)
+
+# EDA
+print(df.head())  # Display first few rows to understand the structure
+
+# Visualizations
+plt.figure(figsize=(12, 6))
+
+# Plotting accident severity by road conditions
+plt.subplot(2, 2, 1)
+sns.countplot(x='Road_Conditions', data=df, hue='Accident_Severity')
+plt.title('Accident Severity by Road Conditions')
+
+# Plotting accident severity by weather conditions
+plt.subplot(2, 2, 2)
+sns.countplot(x='Weather_Conditions', data=df, hue='Accident_Severity')
+plt.title('Accident Severity by Weather Conditions')
+
+# Plotting accident severity by time of day
+plt.subplot(2, 2, 3)
+sns.countplot(x='Time_of_Day', data=df, hue='Accident_Severity')
+plt.title('Accident Severity by Time of Day')
+
+plt.tight_layout()
+plt.show()
